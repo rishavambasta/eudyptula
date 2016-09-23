@@ -3,18 +3,18 @@
  *  Date Created : 22/09/2016
  */
 /* Kernel Programming */
-#define MODULE
-#define LINUX
-#define __KERNEL__
+//#define MODULE
+//#define LINUX
+//#define __KERNEL__
 
 #include <linux/module.h>
-#include <linux/kernel .h>
+#include <linux/kernel.h>
 #include <linux/init.h>
 
 
 /* Prototyping init funtions */
-int hello_init (void);
-void hello_cleanup (void);
+static int hello_init (void);
+static void hello_cleanup (void);
 
 
 static int hello_init (void)

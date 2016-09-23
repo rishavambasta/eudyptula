@@ -1,12 +1,11 @@
-WARN	:= -W -Wall -Wstrict-prototypes -Wmissing-prototypes
-INCLUDE	:= -isystem /lib/modules/`uname -r`/build/include
-CFLAGS	:= -O2 -DMODULE -D__KERNEL__ ${WARN} ${INCLUDE}
-CC	:= gcc
-OBJS	:= ${patsubst %.c, %.o, ${wildcard *.c}}
+obj-m += hello.o
 
-all:	${OBJS}
-
-.PHONY:	clean
+all:
+ifndef K_SRC
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules 
+else
+	make -C $(K_SRC) M=$(PWD) modules
+endif
 
 clean:	
-	rm -rf *.o
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean 
