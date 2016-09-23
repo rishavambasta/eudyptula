@@ -8,4 +8,8 @@ else
 endif
 
 clean:	
+ifdef K_SRC
+	make -C $(K_SRC) M=$(PWD) clean
+else
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean 
+endif
