@@ -19,13 +19,13 @@ static void hello_cleanup (void);
 
 static int hello_init (void)
 {
-	printk (KERN_ALERT "Hello World!\n");
+	printk (KERN_DEBUG "Hello World!\n");
 	return 0;
 }
 
 static void hello_cleanup (void)
 {
-	printk (KERN_ALERT "Unloading Hello\n");
+	printk (KERN_DEBUG "Unloading Hello\n");
 }
 
 module_init(hello_init);
