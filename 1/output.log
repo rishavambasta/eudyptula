@@ -1,0 +1,125 @@
+ls
+hello.c  Makefile  Makefile.back
+rishav@developer:~/prog/eudyptula/1$ uname -a
+Linux developer 4.4.0-38-generic #57-Ubuntu SMP Tue Sep 6 15:42:33 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+rishav@developer:~/prog/eudyptula/1$ make
+make -C /lib/modules/4.4.0-38-generic/build M=/home/rishav/prog/eudyptula/1 modules 
+make[1]: Entering directory '/usr/src/linux-headers-4.4.0-38-generic'
+  CC [M]  /home/rishav/prog/eudyptula/1/hello.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/rishav/prog/eudyptula/1/hello.mod.o
+  LD [M]  /home/rishav/prog/eudyptula/1/hello.ko
+make[1]: Leaving directory '/usr/src/linux-headers-4.4.0-38-generic'
+rishav@developer:~/prog/eudyptula/1$ dmesg | tail
+[  224.781639] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=23772 PROTO=2 
+[  284.877463] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=23902 PROTO=2 
+[  299.224086] usb 5-2: reset full-speed USB device number 2 using uhci_hcd
+[  344.781674] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24032 PROTO=2 
+[  404.741142] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24162 PROTO=2 
+[  464.793873] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24260 PROTO=2 
+[  524.697425] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24358 PROTO=2 
+[  584.704586] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24488 PROTO=2 
+[  644.711261] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24618 PROTO=2 
+[  704.591037] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24748 PROTO=2 
+rishav@developer:~/prog/eudyptula/1$ ls
+hello.c  hello.ko  hello.mod.c  hello.mod.o  hello.o  Makefile  Makefile.back  modules.order  Module.symvers
+rishav@developer:~/prog/eudyptula/1$ sudo insmod hello.ko 
+[sudo] password for rishav: 
+rishav@developer:~/prog/eudyptula/1$ dmesg | tail
+[  299.224086] usb 5-2: reset full-speed USB device number 2 using uhci_hcd
+[  344.781674] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24032 PROTO=2 
+[  404.741142] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24162 PROTO=2 
+[  464.793873] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24260 PROTO=2 
+[  524.697425] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24358 PROTO=2 
+[  584.704586] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24488 PROTO=2 
+[  644.711261] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24618 PROTO=2 
+[  704.591037] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24748 PROTO=2 
+[  764.621407] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24878 PROTO=2 
+[  772.369245] Hello World!
+rishav@developer:~/prog/eudyptula/1$ sudo rmmod hello.ko 
+rishav@developer:~/prog/eudyptula/1$ dmesg | tail
+[  344.781674] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24032 PROTO=2 
+[  404.741142] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24162 PROTO=2 
+[  464.793873] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24260 PROTO=2 
+[  524.697425] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24358 PROTO=2 
+[  584.704586] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24488 PROTO=2 
+[  644.711261] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24618 PROTO=2 
+[  704.591037] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24748 PROTO=2 
+[  764.621407] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24878 PROTO=2 
+[  772.369245] Hello World!
+[  785.858327] Unloading Hello
+rishav@developer:~/prog/eudyptula/1$ export K_SRC=/lib/modules/4.4.0-34-generic/build
+rishav@developer:~/prog/eudyptula/1$ make 
+make -C /lib/modules/4.4.0-34-generic/build M=/home/rishav/prog/eudyptula/1 modules
+make[1]: Entering directory '/usr/src/linux-headers-4.4.0-34-generic'
+  Building modules, stage 2.
+  MODPOST 1 modules
+make[1]: Leaving directory '/usr/src/linux-headers-4.4.0-34-generic'
+rishav@developer:~/prog/eudyptula/1$ ls
+hello.c  hello.ko  hello.mod.c  hello.mod.o  hello.o  Makefile  Makefile.back  modules.order  Module.symvers
+rishav@developer:~/prog/eudyptula/1$ sudo insmod hello.ko 
+rishav@developer:~/prog/eudyptula/1$ dmesg | tail
+[  464.793873] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24260 PROTO=2 
+[  524.697425] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24358 PROTO=2 
+[  584.704586] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24488 PROTO=2 
+[  644.711261] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24618 PROTO=2 
+[  704.591037] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24748 PROTO=2 
+[  764.621407] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24878 PROTO=2 
+[  772.369245] Hello World!
+[  785.858327] Unloading Hello
+[  824.627799] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24944 PROTO=2 
+[  845.934236] Hello World!
+rishav@developer:~/prog/eudyptula/1$ sudo rmmod hello.ko 
+rishav@developer:~/prog/eudyptula/1$ dmesg | tail
+[  524.697425] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24358 PROTO=2 
+[  584.704586] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24488 PROTO=2 
+[  644.711261] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24618 PROTO=2 
+[  704.591037] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24748 PROTO=2 
+[  764.621407] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24878 PROTO=2 
+[  772.369245] Hello World!
+[  785.858327] Unloading Hello
+[  824.627799] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24944 PROTO=2 
+[  845.934236] Hello World!
+[  854.710446] Unloading Hello
+rishav@developer:~/prog/eudyptula/1$ make clean
+make -C /lib/modules/4.4.0-34-generic/build M=/home/rishav/prog/eudyptula/1 clean
+make[1]: Entering directory '/usr/src/linux-headers-4.4.0-34-generic'
+  CLEAN   /home/rishav/prog/eudyptula/1/.tmp_versions
+  CLEAN   /home/rishav/prog/eudyptula/1/Module.symvers
+make[1]: Leaving directory '/usr/src/linux-headers-4.4.0-34-generic'
+rishav@developer:~/prog/eudyptula/1$ export K_SRC=/lib/modules/4.4.0-36-generic/build
+rishav@developer:~/prog/eudyptula/1$ make
+make -C /lib/modules/4.4.0-36-generic/build M=/home/rishav/prog/eudyptula/1 modules
+make[1]: Entering directory '/usr/src/linux-headers-4.4.0-36-generic'
+  CC [M]  /home/rishav/prog/eudyptula/1/hello.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/rishav/prog/eudyptula/1/hello.mod.o
+  LD [M]  /home/rishav/prog/eudyptula/1/hello.ko
+make[1]: Leaving directory '/usr/src/linux-headers-4.4.0-36-generic'
+rishav@developer:~/prog/eudyptula/1$ sudo insmod hello.ko 
+rishav@developer:~/prog/eudyptula/1$ dmesg | tail
+[  644.711261] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24618 PROTO=2 
+[  704.591037] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24748 PROTO=2 
+[  764.621407] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24878 PROTO=2 
+[  772.369245] Hello World!
+[  785.858327] Unloading Hello
+[  824.627799] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24944 PROTO=2 
+[  845.934236] Hello World!
+[  854.710446] Unloading Hello
+[  884.531312] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=25074 PROTO=2 
+[  891.970573] Hello World!
+rishav@developer:~/prog/eudyptula/1$ sudo rmmod hello.ko 
+rishav@developer:~/prog/eudyptula/1$ dmesg | tail
+[  704.591037] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24748 PROTO=2 
+[  764.621407] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24878 PROTO=2 
+[  772.369245] Hello World!
+[  785.858327] Unloading Hello
+[  824.627799] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=24944 PROTO=2 
+[  845.934236] Hello World!
+[  854.710446] Unloading Hello
+[  884.531312] [UFW BLOCK] IN=wlp12s0 OUT= MAC=00:24:2c:7b:89:5f:00:17:7c:4b:2c:cf:08:00 SRC=192.168.2.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0x00 TTL=1 ID=25074 PROTO=2 
+[  891.970573] Hello World!
+[  902.005048] Unloading Hello
+rishav@developer:~/prog/eudyptula/1$ 
